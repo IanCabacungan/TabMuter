@@ -3,7 +3,10 @@
 // found in the LICENSE file.
 
 // Called when the user clicks on the browser action.
-chrome.browserAction.onClicked.addListener(function(tab) {
+
+chrome.commands.onCommand.addListener(function (command) {
+    if (command === "switch") {
+
   chrome.windows.getLastFocused(
  // Without this, window.tabs is not populated.
  {populate: true},
@@ -30,7 +33,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
      }
    }
    if (i == window.tabs.length - 1) {
-     i = 0;
+     i = -1;
      loop = true;
    }
    if (loop && active == i) {
@@ -40,5 +43,13 @@ chrome.browserAction.onClicked.addListener(function(tab) {
  });
 
 
-
+}
+else if (command == "mute") {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+  var currTab = tabs[0];
+  if (currTab) { // Sanity check
+    /* do stuff */
+  }
+});
+}
 });

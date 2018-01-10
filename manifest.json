@@ -1,7 +1,7 @@
 {
-    "name": "Hello Extensions",
-    "description" : "Base Level Extension",
-    "version": "1.0",
+    "name": "TabMuter",
+    "description" : "Mutes tabs",
+    "version": "0.9",
     "manifest_version": 2,
     "icons": { "128": "sluggie.png"},
     "browser_action": {
@@ -12,15 +12,22 @@
     ],
     "background": {
       "scripts": ["background.js"],
-      "persistent": false
+      "persistent": true
     },
     "commands": {
-      "_execute_browser_action": {
+      "switch": {
         "suggested_key": {
           "default": "Ctrl+Shift+F",
           "mac": "MacCtrl+Shift+F"
         },
-        "description": "Opens hello.html"
+        "description": "Switch tab to one making noise"
+      },
+      "mute": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+M",
+          "mac": "MacCtrl+Shift+F"
+        },
+        "description": "Mutes active tab"
       }
     }
   }

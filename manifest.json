@@ -24,7 +24,7 @@
       },
       "mute": {
         "suggested_key": {
-          "default": "Ctrl+Shift+M",
+          "default": "Ctrl+Shift+L",
           "mac": "MacCtrl+Shift+F"
         },
         "description": "Mutes active tab"

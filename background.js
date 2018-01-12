@@ -45,11 +45,27 @@ chrome.commands.onCommand.addListener(function (command) {
 
 }
 else if (command == "mute") {
+  /*
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
   var currTab = tabs[0];
-  if (currTab) { // Sanity check
-    /* do stuff */
+  chrome.tabs.update(tabs[0], {audible:false});
+  */
+  chrome.windows.getLastFocused(
+ // Without this, window.tabs is not populated.
+ {populate: true},
+ function (window)
+ {
+  for (var i = 0; i < window.tabs.length; i++)
+  {
+   // Finding the selected tab.
+   if (window.tabs[i].active)
+   {
+     chrome.tabs.update(window.tabs[i].id, {muted: true});
+     return;
+   }
+
   }
-});
+ });
 }
+
 });
